@@ -5,6 +5,7 @@ use chrono::Local;
 use clap::Parser;
 use log::{error, info, trace, warn};
 use std::io::Write;
+use std::process;
 use tokio::time::{self, Duration};
 
 mod args;
@@ -84,6 +85,7 @@ async fn main() {
                         }
                         Err(e) => {
                             warn!("update record failed, {}", e);
+                            process::exit(1);
                         }
                     }
                 } else {
